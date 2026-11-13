@@ -4,7 +4,7 @@
   "description": "Native OMP extension that discovers 9Router models at startup",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ricatix/OMP-9Router-Plus.git"
+    "url": "git+https://github.com/ricatix/omp-9router-plus.git"
   },
   "type": "module",
   "main": "./dist/index.js",
