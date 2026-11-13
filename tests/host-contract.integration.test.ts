@@ -151,6 +151,9 @@ const NATIVE_EFFORTS = THINKING_EFFORTS.filter(
 const HOST_CONTRACT_TEST_TOKEN = "host-contract-test-token";
 const OTHER_PROVIDER_TOKEN = "other-contract-test-token";
 const CHILD_TIMEOUT_MS = 120_000;
+// Bun's 5 s default test timeout is shorter than one child watchdog. Parent
+// budgets cover the child watchdogs each test awaits plus a 30 s margin:
+// 150_000 ms for one child and 510_000 ms for four (CHILD_TIMEOUT_MS each).
 
 /**
  * The roster is intentionally authored as a structurally wider public model:
@@ -574,7 +577,7 @@ if (process.env[CHILD_ENV] !== "1") {
     const { ok: _ok, ...evidence } = snapshot;
     await writeEvidence("task-11-contract.json", evidence);
     logSnapshot("HOST_CONTRACT_SNAPSHOT", evidence);
-  });
+  }, 150_000);
 
   test("startup contract: conflicting provider config is diagnostic without user-model removal", async () => {
     const context = await createContext("conflict", { conflict: true });
@@ -601,7 +604,7 @@ if (process.env[CHILD_ENV] !== "1") {
     const { ok: _ok, ...evidence } = snapshot;
     await writeEvidence("task-11-conflict.json", evidence);
     logSnapshot("HOST_CONTRACT_CONFLICT_SNAPSHOT", evidence);
-  });
+  }, 150_000);
 
   test("failure recovery: stale native cache stays inert without a discovery manager", async () => {
     const context = await createContext("recovery-stale");
@@ -659,7 +662,7 @@ if (process.env[CHILD_ENV] !== "1") {
     };
     await writeEvidence("task-11-recovery.json", evidence);
     logSnapshot("HOST_RECOVERY_SNAPSHOT", evidence);
-  });
+  }, 510_000);
 
   test("failure recovery: success after failure stays eager and the next process is empty", async () => {
     const context = await createContext("recovery-success");
@@ -701,7 +704,7 @@ if (process.env[CHILD_ENV] !== "1") {
     };
     await writeEvidence("task-11-recovery-success.json", evidence);
     logSnapshot("HOST_RECOVERY_SUCCESS_SNAPSHOT", evidence);
-  });
+  }, 510_000);
 
   async function createContext(
     label: string,
