@@ -1,6 +1,6 @@
 {
   "name": "omp-9router-plus",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Native OMP extension that discovers 9Router models at startup",
   "repository": {
     "type": "git",
