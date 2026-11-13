@@ -1,0 +1,27 @@
+omp-9router-plus
+Copyright (c) 2026
+
+This product is distributed under the MIT License. The full license text is in
+LICENSE.
+
+Third-party attribution
+-----------------------
+
+Portions of this project are adapted from opencode-9router-plus
+(https://github.com/ricatix/opencode-9router-plus), MIT License,
+Copyright (c) 2026.
+
+The original plugin concept and earlier implementation come from
+opencode-9router-plugin by mdhb2
+(https://github.com/mdhb2/opencode-9router-plugin), MIT License,
+Copyright (c) 2026.
+
+Model catalog data is generated from decolua/9router
+(https://github.com/decolua/9router) at commit
+1855aa44473e88feac9d3f131b9c0c5fc9706b68, MIT License,
+Copyright (c) 2024-2026 decolua and contributors.
+
+README artwork includes the OMP icon from can1357/oh-my-pi
+(https://github.com/can1357/oh-my-pi) and the 9Router and provider icons from
+decolua/9router (https://github.com/decolua/9router). Brand names and marks
+belong to their respective owners; their use does not imply endorsement.

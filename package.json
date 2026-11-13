@@ -1,0 +1,61 @@
+{
+  "name": "omp-9router-plus",
+  "version": "0.1.0",
+  "description": "Native OMP extension that discovers 9Router models at startup",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ricatix/OMP-9Router-Plus.git"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "assets/readme-hero.png",
+    "README.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "omp": {
+    "extensions": [
+      "./dist/index.js"
+    ]
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test:unit": "bun test ./tests/config.test.ts ./tests/discovery.test.ts ./tests/catalog.test.ts ./tests/models-dev.test.ts ./tests/model-mapper.test.ts ./tests/extension.test.ts",
+    "test:contract": "bun test ./tests/host-contract.integration.test.ts",
+    "test:integration": "bun scripts/runtime-smoke.ts",
+    "test:package": "bun scripts/package-smoke.ts",
+    "check": "bun run format:check && bun run lint && bun run typecheck && bun run test:unit && bun run build && bun run test:contract && bun run test:integration && bun run test:package",
+    "format": "biome format --write .",
+    "format:check": "biome check --formatter-enabled=true --linter-enabled=false .",
+    "lint": "biome check --linter-enabled=true --formatter-enabled=false ."
+  },
+  "keywords": [
+    "omp",
+    "extension",
+    "9router",
+    "provider"
+  ],
+  "license": "MIT",
+  "engines": {
+    "bun": ">=1.4.4"
+  },
+  "peerDependencies": {
+    "@oh-my-pi/pi-coding-agent": "18.20.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.6.7",
+    "@oh-my-pi/pi-coding-agent": "18.20.0",
+    "@types/bun": "1.4.4",
+    "typescript": "5.9.3"
+  }
+}
